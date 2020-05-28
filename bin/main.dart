@@ -1,42 +1,55 @@
 import 'dart:io';
 
-// double luas_segiempat(double panjang, double lebar) {
-//   return panjang * lebar;
-// }
-
-void sapa_penonton() {
-  print("Hello Penonton");
-}
-
-String say(String from, String message, {String to, String appName}) {
-  return from + " say " + message + ((to != null) ? " to " + to : "") + 
-  ((appName != null) ? " via " + appName : "");
-}
-
-String say2(String from, String message, [String to, String appName = "Whatsapp"]) {
-  return from + " say " + message + ((to != null) ? " to " + to : "") + 
-  ((appName != null) ? " via " + appName : "");
-}
-
-double luas_segiempat(double panjang, double lebar) => panjang * lebar;
-
-int doMathOperator(int number1, int number2, Function(int, int) operator) {
-  return operator(number1, number2);
-}
-
 void main(List<String> arguments) {
+  List<int> myList = [1, 1, 4, 3, 6, 2, 7];
+  List<int> list = [];
+  List<String> listString = [];
 
-  Function f;
-  f = luas_segiempat;
-  print(say("Abuza", "Oiii", appName: "Telegram"));
-  print(say2("Abuza", "Oiii", "Doloris"));
-  print(luas_segiempat(3, 2));
-  print(f(3.0, 2.0));
-  print(doMathOperator(1, 2, (a, b) => a * b));
-  double p, l, luas;
+  list[0] = 10;
+  int e = list[0];
+  print(e);
 
-  p = double.tryParse(stdin.readLineSync());
-  l = double.tryParse(stdin.readLineSync());
+  for (int index = 0; index < list.length; index += 1) {
+    print(index);
+  }
 
-  print(luas_segiempat(p, l));
+  for (int bilangan in list) {
+    print(bilangan);
+  }
+
+  myList.add(10);
+  myList.addAll(list);
+  myList.insert(2, 12);
+  myList.insertAll(5, [12, 13]);
+  myList.remove(12);
+  myList.removeRange(1, 3);
+  myList.removeWhere((number) => number % 2 != 0);
+  list = myList.sublist(3, 6);
+  list.clear();
+
+  // a = 4, b = 5
+  myList.sort((a, b) => b - a);
+  myList.removeWhere((number) => number % 2 == 0);
+  if (myList.every((number) => number % 2 != 0)) {
+    print("semua ganjil");
+  } else {
+    print("tidak semua ganjil");
+  }
+
+  if (myList.contains(6)) {
+    print("betul");
+  }
+
+  if (myList.isEmpty) {
+    print("kosong");
+  }
+
+  Set<int> s;
+  s = myList.toSet();
+
+  listString = myList.map((number) => "angka " + number.toString()).toList();
+
+  list.forEach((bilangan) { 
+    print(bilangan);
+  });
 }
