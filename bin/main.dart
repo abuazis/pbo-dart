@@ -1,20 +1,34 @@
 import 'dart:io';
-import 'package:my_first_dart_app/persegi_panjang.dart';
 
-void main(List<String> arguments) {
-  PersegiPanjang kotak1, kotak2;
-  double luasKotak1;
+import 'package:my_first_dart_app/hero.dart';
+import 'package:my_first_dart_app/monster.dart';
+import 'package:my_first_dart_app/monster_kecoa.dart';
+import 'package:my_first_dart_app/monster_ubur_ubur.dart';
 
-  kotak1 = new PersegiPanjang();
-  kotak1.setPanjang(2);
-  kotak1.lebar = -3;
+void main(List<String> arguments) async {
+  Hero h = Hero();
+  Monster monster = MonsterUburUbur();
+  MonsterUburUbur u = MonsterUburUbur();
+  List<Monster> monsters = []; 
 
-  kotak2 = PersegiPanjang();
-  kotak2.setPanjang(double.tryParse(stdin.readLineSync()));
-  kotak2.lebar = double.tryParse(stdin.readLineSync());
+  monsters.add(MonsterUburUbur());
+  monsters.add(MonsterKecoa());
+  monsters.add(MonsterUburUbur());
 
-  luasKotak1 = kotak1.luas;
+  print((monster as MonsterUburUbur).swim());
 
-  print(luasKotak1 + kotak2.luas);
-  print(kotak1.lebar);
+  for (Monster m in monsters) {
+    if (m is MonsterUburUbur) {
+      print(m.swim());
+    }
+  }
+
+  h.healthPoint = -10;
+  u.healthPoint = 10;
+
+  print("hero HP " + h.healthPoint.toString());
+  print("monster HP " + u.healthPoint.toString());
+  print(h.killAMonster());
+  print(u.eatHuman());
+  print(u.swim());
 }
